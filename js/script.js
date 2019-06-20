@@ -2,9 +2,13 @@
 $(function () {
     $('input')[0].focus();
     $('#other-role').hide();
-    $('#color').hide();
+  //NEW ADDITIONS THE FIXES
+    $('#color').prepend('<option value="select">Please Select a T-Shirt Theme</option>');
+    $('#color option[value="select"]').show();
+    $('#color').find('option[value="select"]').prop('selected', 'selected');
+//DONE
     $('#payment option:eq(1)').prop('selected',true);
-    $('#design option:eq(0)').prop('selected',true);
+   
     showCCInfo();
 
 });
@@ -96,26 +100,28 @@ $('#title').change(function () {
 //shows available colors for the selected theme
 $('#design').change(function (e) {
     const designValue = ($('select#design option:checked')).val();
-    const colorLength = $('#color').length;
     console.log(designValue);
 
+
     if (designValue === 'js puns'){
-      $('#color').show();
+        $('#color').show();
         $('.puns').show();
         $('.heart').hide();
     }
     else if (designValue === 'heart js'){
-        $('#color').show();
+        $('#color').show(); 
         $('.heart').show();
         $('.puns').hide();
     }
     else if (designValue === 'Select Theme'){
-      $('#color').hide();
         $('#color option').hide();
         $('.puns').hide();
         $('.heart').hide();
     }
 });
+
+
+
 
 
 const activities = document.querySelector('.activities');
